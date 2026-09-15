@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: demo-app
+
+resources:
+  - ../../base
+
+images:
+  - name: acrazdevsecopsdevyapsd2.azurecr.io/demo-app
+    newName: acrazdevsecopsdevyapsd2.azurecr.io/demo-app
+    newTag: fcb75373b4bc92e3bf0e73817a7160eae2401150
