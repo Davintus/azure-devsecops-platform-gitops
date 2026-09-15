@@ -1,0 +1,27 @@
+﻿apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-app-dev
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: demo-app
+    app.kubernetes.io/part-of: azure-devsecops-platform
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Davintus/azure-devsecops-platform-gitops.git
+    targetRevision: main
+    path: apps/demo-app/overlays/dev
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo-app
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
