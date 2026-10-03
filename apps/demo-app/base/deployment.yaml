@@ -61,3 +61,7 @@ spec:
               port: http
             initialDelaySeconds: 10
             periodSeconds: 20
+
+      volumes:
+        - name: tmp
+          emptyDir: {}
